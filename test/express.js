@@ -36,7 +36,8 @@ describe('Express', function () {
     })
 
     app.get("/", function(req, res) {
-      var unsigned = req.cookies.get( "unsigned" )
+      console.log(req.headers.cookie)
+      var unsigned = req.cookies.get( "unsigned", { signed: false } )
         , signed = req.cookies.get( "signed", { signed: true } )
         , tampered = req.cookies.get( "tampered", { signed: true } )
         , overwrite = req.cookies.get( "overwrite", { signed: true } )
